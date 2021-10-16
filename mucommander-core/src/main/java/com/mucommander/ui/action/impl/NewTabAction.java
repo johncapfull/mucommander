@@ -44,7 +44,7 @@ public class NewTabAction extends MuAction {
 
 	@Override
 	public void performAction() {
-		mainFrame.getActivePanel().getTabs().add(LocalFile.getUserHome());
+		mainFrame.getActivePanel().getTabs().add(mainFrame.getActivePanel().getCurrentFolder());
 	}
 
 	@Override
