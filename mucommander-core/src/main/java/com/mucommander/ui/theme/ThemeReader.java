@@ -245,7 +245,7 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
 
         // Fresh file declaration.
         else if(qName.equals(ELEMENT_FRESH)) {
-            if(state != STATE_FRESH)
+            if(state != STATE_TABLE)
                 traceIllegalDeclaration(qName);
             state = STATE_FRESH;
         }
