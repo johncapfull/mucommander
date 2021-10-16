@@ -98,6 +98,7 @@ interface ThemeXmlConstants {
     public static final String ELEMENT_SYMLINK                       = "symlink";
     public static final String ELEMENT_MARKED                        = "marked";
     public static final String ELEMENT_FILE                          = "file";
+    public static final String ELEMENT_FRESH                         = "fresh";
     public static final String ELEMENT_PROGRESS                      = "progress";
     public static final String ELEMENT_BORDER                        = "border";
     public static final String ELEMENT_INACTIVE_BORDER               = "inactive_border";

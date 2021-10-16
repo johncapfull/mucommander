@@ -86,7 +86,7 @@ public class ThemeData {
      * by an instance of theme data by looping from 0 to this color.
      * </p>
      */
-    public static final int COLOR_COUNT = 68;
+    public static final int COLOR_COUNT = 72;
 
 
 
@@ -676,7 +676,11 @@ public class ThemeData {
      */
     public static final int QUICK_LIST_SELECTED_ITEM_FOREGROUND_COLOR = 67;
 
-
+    /** Fresh files */
+    public static final int FRESH_FOREGROUND_COLOR = 68;
+    public static final int FRESH_INACTIVE_FOREGROUND_COLOR = 69;
+    public static final int FRESH_SELECTED_FOREGROUND_COLOR = 70;
+    public static final int FRESH_INACTIVE_SELECTED_FOREGROUND_COLOR = 71;
 
 
     // - Default fonts -------------------------------------------------------------------------------------------------
@@ -923,6 +927,8 @@ public class ThemeData {
         registerColor(ARCHIVE_INACTIVE_FOREGROUND_COLOR,              DEFAULT_TABLE_FOREGROUND);
         registerColor(SYMLINK_INACTIVE_FOREGROUND_COLOR,              DEFAULT_TABLE_FOREGROUND);
         registerColor(FILE_FOREGROUND_COLOR,                          DEFAULT_TABLE_FOREGROUND);
+        registerColor(FRESH_FOREGROUND_COLOR,                         DEFAULT_TABLE_FOREGROUND);
+        registerColor(FRESH_INACTIVE_FOREGROUND_COLOR,                DEFAULT_TABLE_FOREGROUND);
         registerColor(HIDDEN_FILE_SELECTED_FOREGROUND_COLOR,          DEFAULT_TABLE_SELECTION_FOREGROUND);
         registerColor(FOLDER_SELECTED_FOREGROUND_COLOR,               DEFAULT_TABLE_SELECTION_FOREGROUND);
         registerColor(ARCHIVE_SELECTED_FOREGROUND_COLOR,              DEFAULT_TABLE_SELECTION_FOREGROUND);
@@ -933,6 +939,8 @@ public class ThemeData {
         registerColor(SYMLINK_INACTIVE_SELECTED_FOREGROUND_COLOR,     DEFAULT_TABLE_SELECTION_FOREGROUND);
         registerColor(FILE_INACTIVE_SELECTED_FOREGROUND_COLOR,        DEFAULT_TABLE_SELECTION_FOREGROUND);
         registerColor(FILE_SELECTED_FOREGROUND_COLOR,                 DEFAULT_TABLE_SELECTION_FOREGROUND);
+        registerColor(FRESH_SELECTED_FOREGROUND_COLOR,                DEFAULT_TABLE_SELECTION_FOREGROUND);
+        registerColor(FRESH_INACTIVE_SELECTED_FOREGROUND_COLOR,       DEFAULT_TABLE_SELECTION_FOREGROUND);
 
         // FileTable default values.
         registerFont(FILE_TABLE_FONT,                                          DEFAULT_TABLE_FONT);

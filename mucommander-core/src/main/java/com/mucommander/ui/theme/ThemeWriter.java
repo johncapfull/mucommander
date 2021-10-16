@@ -225,8 +225,27 @@ class ThemeWriter implements ThemeXmlConstants {
             out.writeStandAloneElement(ELEMENT_FOREGROUND, getColorAttributes(theme.getColor(Theme.FILE_SELECTED_FOREGROUND_COLOR)));
         out.endElement(ELEMENT_SELECTED);
         out.endElement(ELEMENT_FILE);
-        out.endElement(ELEMENT_TABLE);
 
+        // Fresh files.
+        out.startElement(ELEMENT_FRESH);
+        out.println();
+        out.startElement(ELEMENT_NORMAL);
+        out.println();
+        if(theme.isColorSet(Theme.FRESH_INACTIVE_FOREGROUND_COLOR))
+            out.writeStandAloneElement(ELEMENT_INACTIVE_FOREGROUND, getColorAttributes(theme.getColor(Theme.FRESH_INACTIVE_FOREGROUND_COLOR)));
+        if(theme.isColorSet(Theme.FRESH_FOREGROUND_COLOR))
+            out.writeStandAloneElement(ELEMENT_FOREGROUND, getColorAttributes(theme.getColor(Theme.FRESH_FOREGROUND_COLOR)));
+        out.endElement(ELEMENT_NORMAL);
+        out.startElement(ELEMENT_SELECTED);
+        out.println();
+        if(theme.isColorSet(Theme.FRESH_INACTIVE_SELECTED_FOREGROUND_COLOR))
+            out.writeStandAloneElement(ELEMENT_INACTIVE_FOREGROUND, getColorAttributes(theme.getColor(Theme.FRESH_INACTIVE_SELECTED_FOREGROUND_COLOR)));
+        if(theme.isColorSet(Theme.FRESH_SELECTED_FOREGROUND_COLOR))
+            out.writeStandAloneElement(ELEMENT_FOREGROUND, getColorAttributes(theme.getColor(Theme.FRESH_SELECTED_FOREGROUND_COLOR)));
+        out.endElement(ELEMENT_SELECTED);
+        out.endElement(ELEMENT_FRESH);
+
+        out.endElement(ELEMENT_TABLE);
 
 
         // - Shell description ----------------------------------------------------------

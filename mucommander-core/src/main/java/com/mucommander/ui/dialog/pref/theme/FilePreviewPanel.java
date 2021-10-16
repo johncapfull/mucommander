@@ -46,6 +46,7 @@ class FilePreviewPanel extends JScrollPane implements PropertyChangeListener {
     private static final int HIDDEN_FILE = 3;
     private static final int SYMLINK     = 4;
     private static final int MARKED_FILE = 5;
+    private static final int FRESH_FILE  = 6;
 
 
 
@@ -136,7 +137,8 @@ class FilePreviewPanel extends JScrollPane implements PropertyChangeListener {
                                   {"", Translator.get("theme_editor.archive_file")},
                                   {"", Translator.get("theme_editor.hidden_file")},
                                   {"", Translator.get("theme_editor.symbolic_link")},
-                                  {"", Translator.get("theme_editor.marked_file")}},
+                                  {"", Translator.get("theme_editor.marked_file")},
+                                  {"", Translator.get("theme_editor.fresh_file")}},
                 new String[] {"", Translator.get("preview")});
 
             // Initialises table painting.
@@ -298,6 +300,13 @@ class FilePreviewPanel extends JScrollPane implements PropertyChangeListener {
                                                                ThemeData.MARKED_FOREGROUND_COLOR);
                 return FilePreviewPanel.this.data.getColor(isSelected ? ThemeData.MARKED_INACTIVE_SELECTED_FOREGROUND_COLOR :
                                                            ThemeData.MARKED_INACTIVE_FOREGROUND_COLOR);
+
+            case FRESH_FILE:
+                if(FilePreviewPanel.this.isActive)
+                    return FilePreviewPanel.this.data.getColor(isSelected ? ThemeData.FRESH_SELECTED_FOREGROUND_COLOR :
+                            ThemeData.FRESH_FOREGROUND_COLOR);
+                return FilePreviewPanel.this.data.getColor(isSelected ? ThemeData.FRESH_INACTIVE_SELECTED_FOREGROUND_COLOR :
+                        ThemeData.FRESH_INACTIVE_FOREGROUND_COLOR);
             }
 
             // Impossible.

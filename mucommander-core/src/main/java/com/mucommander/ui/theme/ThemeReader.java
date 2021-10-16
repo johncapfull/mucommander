@@ -102,6 +102,10 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
     private static final int STATE_QUICK_LIST_ITEM          = 40;
     private static final int STATE_QUICK_LIST_ITEM_NORMAL   = 41;
     private static final int STATE_QUICK_LIST_ITEM_SELECTED = 42;
+    /** Parsing fresh file color values */
+    private static final int STATE_FRESH                    = 43;
+    private static final int STATE_FRESH_NORMAL             = 44;
+    private static final int STATE_FRESH_SELECTED           = 45;
 
 
     // - Instance variables --------------------------------------------------------------
@@ -239,6 +243,13 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
             state = STATE_FILE;
         }
 
+        // Fresh file declaration.
+        else if(qName.equals(ELEMENT_FRESH)) {
+            if(state != STATE_FRESH)
+                traceIllegalDeclaration(qName);
+            state = STATE_FRESH;
+        }
+
         else if(qName.equals(ELEMENT_ALTERNATE)) {
             if(state != STATE_TABLE)
                 traceIllegalDeclaration(qName);
@@ -287,6 +298,8 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
                 state = STATE_TABLE_NORMAL;
             else if(state == STATE_QUICK_LIST_ITEM)
             	state = STATE_QUICK_LIST_ITEM_NORMAL;
+            else if(state == STATE_FRESH)
+                state = STATE_FRESH_NORMAL;
             else
                 traceIllegalDeclaration(qName);
         }
@@ -317,6 +330,8 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
                 state = STATE_TABLE_SELECTED;
             else if(state == STATE_QUICK_LIST_ITEM)
             	state = STATE_QUICK_LIST_ITEM_SELECTED;
+            else if(state == STATE_FRESH)
+                state = STATE_FRESH_SELECTED;
             else
                 traceIllegalDeclaration(qName);
         }
@@ -387,6 +402,8 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
                 template.setColor(ThemeData.HIDDEN_FILE_INACTIVE_FOREGROUND_COLOR, createColor(attributes));
             else if(state == STATE_MARKED_NORMAL)
                 template.setColor(ThemeData.MARKED_INACTIVE_FOREGROUND_COLOR, createColor(attributes));
+            else if(state == STATE_FRESH_NORMAL)
+                template.setColor(ThemeData.FRESH_INACTIVE_FOREGROUND_COLOR, createColor(attributes));
             else if(state == STATE_FILE_SELECTED)
                 template.setColor(ThemeData.FILE_INACTIVE_SELECTED_FOREGROUND_COLOR, createColor(attributes));
             else if(state == STATE_FOLDER_SELECTED)
@@ -399,6 +416,8 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
                 template.setColor(ThemeData.HIDDEN_FILE_INACTIVE_SELECTED_FOREGROUND_COLOR, createColor(attributes));
             else if(state == STATE_MARKED_SELECTED)
                 template.setColor(ThemeData.MARKED_INACTIVE_SELECTED_FOREGROUND_COLOR, createColor(attributes));
+            else if(state == STATE_FRESH_SELECTED)
+                template.setColor(ThemeData.FRESH_INACTIVE_SELECTED_FOREGROUND_COLOR, createColor(attributes));
             else
                 traceIllegalDeclaration(qName);
         }
@@ -559,6 +578,11 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
             else if(state == STATE_FILE_SELECTED)
                 template.setColor(ThemeData.FILE_SELECTED_FOREGROUND_COLOR, createColor(attributes));
 
+            else if(state == STATE_FRESH_NORMAL)
+                template.setColor(ThemeData.FRESH_FOREGROUND_COLOR, createColor(attributes));
+            else if(state == STATE_FRESH_SELECTED)
+                template.setColor(ThemeData.FRESH_SELECTED_FOREGROUND_COLOR, createColor(attributes));
+
             else if(state == STATE_SHELL_NORMAL)
                 template.setColor(ThemeData.SHELL_FOREGROUND_COLOR, createColor(attributes));
             else if(state == STATE_SHELL_SELECTED)
@@ -644,6 +668,9 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
         else if(qName.equals(ELEMENT_FILE))
             state = STATE_TABLE;
 
+        else if(qName.equals(ELEMENT_FRESH))
+            state = STATE_TABLE;
+
         // Shell declaration.
         else if(qName.equals(ELEMENT_SHELL))
             state = STATE_ROOT;
@@ -698,6 +725,8 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
                 state = STATE_MARKED;
             else if(state == STATE_FILE_NORMAL)
                 state = STATE_FILE;
+            else if(state == STATE_FRESH_NORMAL)
+                state = STATE_FRESH;
             else if(state == STATE_EDITOR_NORMAL)
                 state = STATE_EDITOR;
             else if(state == STATE_LOCATION_BAR_NORMAL)
@@ -726,6 +755,8 @@ class ThemeReader extends DefaultHandler implements ThemeXmlConstants {
                 state = STATE_MARKED;
             else if(state == STATE_FILE_SELECTED)
                 state = STATE_FILE;
+            else if(state == STATE_FRESH_SELECTED)
+                state = STATE_FRESH;
             else if(state == STATE_EDITOR_SELECTED)
                 state = STATE_EDITOR;
             else if(state == STATE_LOCATION_BAR_SELECTED)
