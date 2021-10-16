@@ -20,6 +20,7 @@ package com.mucommander.ui.main.table;
 
 import java.awt.Component;
 import java.awt.Font;
+import java.util.Calendar;
 
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
@@ -129,6 +130,10 @@ public class FileTableCellRenderer implements TableCellRenderer, ThemeListener {
         // Marked file.
         if(tableModel.isRowMarked(row))
             return ThemeCache.MARKED;
+
+        // Fresh file.
+        if(isFresh(file))
+            return ThemeCache.FRESH_FILE;
 
         // Symlink.
         if(file.isSymlink())
@@ -276,5 +281,10 @@ public class FileTableCellRenderer implements TableCellRenderer, ThemeListener {
         if(event.getFontId() == Theme.FILE_TABLE_FONT) {
             setCellLabelsFont(ThemeCache.tableFont);
         }
+    }
+
+    private static boolean isFresh(AbstractFile file) {
+        long current = System.currentTimeMillis();
+        return (current - file.getDate()) < 7 * 24 * 60 * 60 * 1000;    // 7 days in ms
     }
 }

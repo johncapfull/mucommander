@@ -137,6 +137,14 @@ class FilePanel extends ThemeEditorPanel {
         addForegroundColor(gridPanel, isActive ? ThemeData.MARKED_SELECTED_FOREGROUND_COLOR : ThemeData.MARKED_INACTIVE_SELECTED_FOREGROUND_COLOR,
                            selectedBackgroundButton, fontChooser, preview);
 
+        // Fresh files.
+        gridPanel.add(createCaptionLabel("theme_editor.fresh_file"));
+        addForegroundColor(gridPanel, isActive ? ThemeData.FRESH_FOREGROUND_COLOR : ThemeData.FRESH_INACTIVE_FOREGROUND_COLOR,
+                backgroundButton, fontChooser, preview);
+        addForegroundColor(gridPanel, isActive ? ThemeData.FRESH_SELECTED_FOREGROUND_COLOR : ThemeData.FRESH_INACTIVE_SELECTED_FOREGROUND_COLOR,
+                selectedBackgroundButton, fontChooser, preview);
+
+
         // Border.
         gridPanel.add(createCaptionLabel("theme_editor.border"));
         gridPanel.add(borderButton = new ColorButton(parent, themeData, isActive ? ThemeData.FILE_TABLE_BORDER_COLOR :
