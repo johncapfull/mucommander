@@ -112,6 +112,7 @@ public class SearchDialog extends FocusDialog implements ActionListener, Documen
 
         String searchFor = PathUtils.removeLeadingSeparator(searchURL.getPath());
         searchFilesField = new JTextField(searchFor);
+        searchFilesField.setText("*");
         searchFilesField.getDocument().addDocumentListener(this);
         compPanel.addRow(Translator.get("search_dialog.search_files"), searchFilesField, 5);
 
