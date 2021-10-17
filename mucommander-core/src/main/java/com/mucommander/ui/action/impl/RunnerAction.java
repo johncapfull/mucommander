@@ -74,7 +74,7 @@ public class RunnerAction extends SelectedFileAction {
 
     private void sendRunner(String cmd, String dir, String args) {
         try {
-            PrintWriter writer = new PrintWriter("/Users/johncapfull/runner", "UTF-8");
+            PrintWriter writer = new PrintWriter("/tmp/btnhelper-runner", "UTF-8");
             writer.println(cmd);
             writer.println(dir);
             writer.println(args);
