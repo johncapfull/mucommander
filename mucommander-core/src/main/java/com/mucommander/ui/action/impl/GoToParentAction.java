@@ -23,11 +23,7 @@ import java.util.Map;
 import javax.swing.KeyStroke;
 
 import com.mucommander.commons.file.AbstractFile;
-import com.mucommander.ui.action.AbstractActionDescriptor;
-import com.mucommander.ui.action.ActionCategory;
-import com.mucommander.ui.action.ActionDescriptor;
-import com.mucommander.ui.action.ActionFactory;
-import com.mucommander.ui.action.MuAction;
+import com.mucommander.ui.action.*;
 import com.mucommander.ui.main.FolderPanel;
 import com.mucommander.ui.main.MainFrame;
 
@@ -56,7 +52,8 @@ public class GoToParentAction extends ActiveTabAction {
     @Override
     protected void toggleEnabledState() {
         setEnabled(!mainFrame.getActivePanel().getTabs().getCurrentTab().isLocked() &&
-        		    mainFrame.getActivePanel().getCurrentFolder().getParent()!=null);
+                        (mainFrame.getActivePanel().getFolderHistory().hasBackFolder() ||
+        		         mainFrame.getActivePanel().getCurrentFolder().getParent()!=null));
     }
 
 
@@ -93,7 +90,9 @@ public class GoToParentAction extends ActiveTabAction {
     public void performAction() {
         // Changes the current folder to make it the current folder's parent.
         // Does nothing if the current folder doesn't have a parent.
-        goToParent(mainFrame.getActivePanel());
+        if (!goToParent(mainFrame.getActivePanel())) {
+            mainFrame.getActivePanel().getFolderHistory().goBack();
+        }
     }
 
 	@Override
