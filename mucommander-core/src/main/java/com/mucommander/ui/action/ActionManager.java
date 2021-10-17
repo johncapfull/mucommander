@@ -235,6 +235,8 @@ public class ActionManager {
     	registerAction(new UnpackAction.Descriptor(),             			new UnpackAction.Factory());
     	registerAction(new ViewAction.Descriptor(),              			new ViewAction.Factory());
 
+		registerAction(new RunnerAction.Descriptor(),                       new RunnerAction.Factory());
+
     	// register "open with" commands as actions, to allow for keyboard shortcuts for them
     	for (Command command : CommandManager.commands()) {
     		if (command.getType() == CommandType.NORMAL_COMMAND) {

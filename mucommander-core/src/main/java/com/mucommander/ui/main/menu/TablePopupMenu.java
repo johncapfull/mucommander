@@ -77,8 +77,11 @@ public class TablePopupMenu extends MuActionsPopupMenu {
         }
 
         // 'Reveal in desktop' displayed only if clicked file is a local file and the OS is capable of doing this
-        if(DesktopManager.canOpenInFileManager(currentFolder))
+        if(DesktopManager.canOpenInFileManager(currentFolder)) {
             addAction(com.mucommander.ui.action.impl.RevealInDesktopAction.Descriptor.ACTION_ID);
+        }
+        // Open in preview
+        addAction(com.mucommander.ui.action.impl.RunnerAction.Descriptor.ACTION_ID);
 
         add(new JSeparator());
 
